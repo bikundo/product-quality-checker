@@ -11,5 +11,9 @@ require __DIR__ . '/library/Checker.php';
 $data = [];
 $data['message'] = 'long descriptive body of assessment results';
 $c = new Checker();
-Checker::send_email($data);
+if (Checker::send_email($data)) {
+    echo "sent";
+} else {
+    echo "error!!";
+}
 
