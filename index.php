@@ -21,7 +21,7 @@ $products_string = $_POST['products'];
 $products = json_decode($products_string);
 $res = quality_check($products);
 //send email with results.
-$message = explode(PHP_EOL, $messages);
+$message = explode(PHP_EOL, $res);
 $email = $products->email;
 $c::send_email($message, $email);
 //Json response.
