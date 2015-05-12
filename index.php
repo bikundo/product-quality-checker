@@ -8,10 +8,28 @@
 //require the vendor autoload  file, which auto-loads composer classes(packages).
 require __DIR__ . '/vendor/autoload.php';
 
-$msg = "First line of text\nSecond line of text";
+//PHPMailer Object
+$mail = new PHPMailer;
 
-// use wordwrap() if lines are longer than 70 characters
-$msg = wordwrap($msg,70);
+//From email address and name
+$mail->From = "binmonk@gmail.com";
+$mail->FromName = "Full Name";
 
-// send email
-mail("binmonk@gmail.com","My subject",$msg);
+//To address and name
+$mail->addAddress("bikundo.peter@gmail.com", "bikundo Peter");
+
+//Address to which recipient will reply
+$mail->addReplyTo("binmonk@gmail.com", "Reply");
+
+//Send HTML or Plain Text email
+$mail->isHTML(true);
+
+$mail->Subject = "Subject Text";
+$mail->Body = "<i>Mail body in HTML</i>";
+$mail->AltBody = "This is the plain text version of the email content";
+
+if (!$mail->send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+    echo "Message has been sent successfully";
+}
