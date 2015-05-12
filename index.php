@@ -7,29 +7,35 @@
  */
 //require the vendor autoload  file, which auto-loads composer classes(packages).
 require __DIR__ . '/vendor/autoload.php';
+$data = [];
+$data['message'] = 'long descriptive body of assessment results';
+send_email($data);
 
-//PHPMailer Object
-$mail = new PHPMailer;
+function send_email($data)
+{
+    //PHPMailer Object
+    $mail = new PHPMailer;
 
 //From email address and name
-$mail->From = "binmonk@gmail.com";
-$mail->FromName = "Full Name";
+    $mail->From = "binmonk@gmail.com";
+    $mail->FromName = "Full Name";
 
 //To address and name
-$mail->addAddress("bikundo.peter@gmail.com", "bikundo Peter");
+    $mail->addAddress("bikundo.peter@gmail.com", "bikundo Peter");
 
 //Address to which recipient will reply
-$mail->addReplyTo("binmonk@gmail.com", "Reply");
+    $mail->addReplyTo("binmonk@gmail.com", "Reply");
 
 //Send HTML or Plain Text email
-$mail->isHTML(true);
+    $mail->isHTML(true);
 
-$mail->Subject = "Subject Text";
-$mail->Body = "<i>Mail body in HTML</i>";
-$mail->AltBody = "This is the plain text version of the email content";
+    $mail->Subject = "Quality Check results.";
+    $mail->Body = "<i>".$data['message']."</i>";
 
-if (!$mail->send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
-} else {
-    echo "Message has been sent successfully";
+    if (!$mail->send()) {
+        return "Mailer Error: " . $mail->ErrorInfo;
+    } else {
+        return "Message has been sent successfully";
+    }
+
 }
