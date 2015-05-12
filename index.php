@@ -9,6 +9,7 @@
 require __DIR__ . '/vendor/autoload.php';
 //require the checker class.
 require __DIR__ . '/library/Checker.php';
+$c = new Checker;
 $response = [];
 if (!isset($_POST['products'])) {
     $response['success'] = 'false';
