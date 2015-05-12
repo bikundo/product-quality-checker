@@ -21,7 +21,9 @@ $products_string = $_POST['products'];
 $products = json_decode($products_string);
 $res = quality_check($products);
 //send email with results.
-$message = explode(PHP_EOL, $res);
+
+$message = implode("\n", $res);
+
 $email = $products->email;
 $c::send_email($message, $email);
 //Json response.
@@ -29,7 +31,7 @@ $response['success'] = 'true';
 $response['message'] = 'products found';
 $response['results'] = $res;
 header('Content-Type: application/json');
-echo json_encode($response);
+echo json_encode($message);
 
 /**
  * Run all checks and
@@ -57,7 +59,10 @@ function quality_check($item)
     }
 
 //    check required fields
-    $messages[] = array_merge($messages, $c->check_required_fields($product));
+    $required_fields = $c->check_required_fields($product);
+    foreach ($required_fields as $key => $msg) {
+        $messages[] = array_push($messages, $msg);
+    }
 
     return $messages;
 
