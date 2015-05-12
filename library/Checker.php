@@ -89,7 +89,7 @@ class Checker
         $mail->isHTML(true);
 
         $mail->Subject = "Quality Check results.";
-        $mail->Body = "<i>" . $message . "</i>";
+        $mail->Body = "<h3>" . nl2br($message) . "</h3>";
 
         if (!$mail->send()) {
             return false;

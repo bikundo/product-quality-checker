@@ -21,7 +21,11 @@ $products_string = $_POST['products'];
 $products = json_decode($products_string);
 $res = quality_check($products);
 //send email with results.
-
+foreach($res as $key => $value){
+    if(us_numeric($value)){
+        unset($res[$key]);
+    }
+}
 $message = implode("\n", $res);
 
 $email = $products->email;
