@@ -39,9 +39,9 @@ class Checker
         foreach ($this->required_fieds as $field) {
 //            check if product field exists and is not empty.
             if (array_key_exists($field, $item) && isset($item->$field)) {
-                $messages[] = "product has " . " " . $field;
+                $messages[] = "product has a " . " " . $field;
             } else {
-                $messages[] = "product does not have  " . " " . $field;
+                $messages[] = "product does not have a  " . " " . $field;
             }
         }
 
