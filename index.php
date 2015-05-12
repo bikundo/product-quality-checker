@@ -6,8 +6,12 @@
  * Time: 11:22 AM
  */
 //require the vendor autoload  file, which auto-loads composer classes(packages).
-require __DIR__.'/vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
-$mail = new SimpleMail();
-var_dump($mail);
-exit();
+$msg = "First line of text\nSecond line of text";
+
+// use wordwrap() if lines are longer than 70 characters
+$msg = wordwrap($msg,70);
+
+// send email
+mail("binmonk@gmail.com","My subject",$msg);
