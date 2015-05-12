@@ -31,7 +31,7 @@ $response['success'] = 'true';
 $response['message'] = 'products found';
 $response['results'] = $res;
 header('Content-Type: application/json');
-echo json_encode($message);
+echo json_encode($response);
 
 /**
  * Run all checks and
