@@ -8,7 +8,10 @@ The system will receive a JSON fragment via an HTTP request every time a product
 or changed.
 
 ####Installation.
-1. clone this repository to your local machine by running git clone https://github.com/bikundo/product-quality-checker.git
+1. clone this repository to your local machine by running 
+```
+git clone https://github.com/bikundo/product-quality-checker.git
+```
 2. Install composer, if you do not already have it installed. [instructions here.](https://getcomposer.org/download)
 3. Run composer install, to install all dependencies.
 
