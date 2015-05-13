@@ -11,13 +11,13 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/library/Checker.php';
 $c = new Checker;
 $response = [];
-if (!isset($_POST['products'])) {
+if (!isset($_POST['product'])) {
     $response['success'] = 'false';
     $response['message'] = 'no products in your request';
     echo json_encode($response);
     exit();
 }
-$products_string = $_POST['products'];
+$products_string = $_POST['product'];
 $products = json_decode($products_string);
 $res = quality_check($products);
 //send email with results.
